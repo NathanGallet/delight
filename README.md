@@ -1,21 +1,16 @@
 # Delight
 
-**TODO: Add description**
+Technical test for delight company
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `delight` to your list of dependencies in `mix.exs`:
+Run `mix deps.get`.
+
+You need to create the file `config/config.secret.exs` and add :
 
 ```elixir
-def deps do
-  [
-    {:delight, "~> 0.1.0"}
-  ]
-end
+System.put_env("TWITTER_CONSUMER_KEY", "6dB5IVeBSvTZx3SC8xTcHoDbO")
+System.put_env("TWITTER_CONSUMER_SECRET", "dnosZkvsW8oei56UyCl1uxMqVrR8b3bp5vJdGZRAaA3ga40O0N")
+System.put_env("TWITTER_ACCESS_TOKEN", "166818158-x5QXTEunwhemUa1k8hcFTDrdaCWL00sQNxkMzglt")
+System.put_env("TWITTER_ACCESS_TOKEN_SECRET", "ODJDmlQWvmlGpmaxY22wGBxBiikWzNh0NZqBdMFs39TQb")
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/delight](https://hexdocs.pm/delight).
-
