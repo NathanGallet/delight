@@ -8,7 +8,7 @@ defmodule Delight.Application do
       {Plug.Cowboy, scheme: :http, plug: Delight.Router, options: [port: 4000]}
     ]
 
-    opts = [strategy: :one_for_one, name: Delight.Supervisor]
+    opts = [strategy: :one_for_one, name: __MODULE__]
 
     Logger.info("---- Starting application. ----")
 
