@@ -14,7 +14,7 @@ defmodule Delight.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :extwitter],
+      extra_applications: [:logger, :extwitter, :timex],
       mod: {Delight.Application, []}
     ]
   end
@@ -24,7 +24,8 @@ defmodule Delight.MixProject do
     [
       {:oauther, "~> 1.1"},
       {:extwitter, "~> 0.8"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:timex, "~> 3.1"}
     ]
   end
 end
