@@ -45,12 +45,11 @@ defmodule TwitterFetcher do
   defp average(list, result \\ [])
   defp average(list, result) do
     [ first | [ second | tail ]] = list
-
     result = [ abs(second - first) | result ]
 
     case length(tail) do
       n when n in [2, 3] -> result
-      _ -> average(tail, result)
+      _                  -> average(tail, result)
     end
   end
 

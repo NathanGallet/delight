@@ -11,10 +11,11 @@ defmodule Delight do
     end)
 
     # Wait results.
-    result = Enum.map(tasks, &Task.await/1)
+    result =
+      Enum.map(tasks, &Task.await/1)
 
     Logger.info("#################################")
-    Logger.info("#{inspect(result)}")
-    Logger.info("*********************************")
+    Logger.info("#{inspect(res)}")
+    Logger.info("#################################")
   end
 end

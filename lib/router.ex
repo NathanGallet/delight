@@ -1,11 +1,16 @@
 defmodule Delight.Router do
   use Plug.Router
+  require Logger
 
   plug :match
   plug :dispatch
 
   get "/ranks" do
-    send_resp(conn, :ok, "yolo")
+    res = Delight.kpi_initial_keywords
+
+    conn
+    |> put_req_header("content-type", "application/json")
+    |> send_resp(:ok, Poison.encode!(%{"apple" => 19, "nintendo" => 20}))
   end
 
   match _ do
