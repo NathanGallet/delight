@@ -11,13 +11,12 @@ defmodule TwitterFetcher do
     GenServer.start_link(__MODULE__, name, name: via_tuple(name))
   end
 
-  # Call synchronously Twitter's API.
   def fetch_keyword(keyword) do
     GenServer.call(via_tuple(keyword), :fetch_keyword)
   end
 
   defp via_tuple(keyword) do
-    {:via, Delight.Registry, {:keyword_value, keyword}}
+    {:via, Delight.Registry, {:keyword, keyword}}
   end
 
   #########################################
@@ -28,18 +27,17 @@ defmodule TwitterFetcher do
   GenServer.init/1 callback
   """
   def init(keyword) do
-    Logger.info("Start #{inspect(keyword)}")
     {:ok, keyword}
   end
 
   def handle_call(:fetch_keyword, _from, keyword) do
     Logger.info("Fetch keyword : #{inspect(keyword)} from Twitter" )
+    zbra =
+      keyword
+      |> ExTwitter.search([count: 100])
+      |> Enum.map(&(&1.created_at))
 
-    keyword
-    |> ExTwitter.search([count: 100])
-    |> Enum.map(&(&1.created_at))
-    |> IO.inspect(label: "=====================")
-
-    {:reply, keyword, keyword}
+    Logger.info("#{inspect(keyword)} finished" )
+    {:reply, keyword, zbra}
   end
 end
