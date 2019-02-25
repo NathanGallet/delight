@@ -10,7 +10,7 @@ defmodule Delight.Router do
 
     conn
     |> put_req_header("content-type", "application/json")
-    |> send_resp(:ok, Poison.encode!(%{"apple" => 19, "nintendo" => 20}))
+    |> send_resp(:ok, Poison.encode!(res))
   end
 
   match _ do
