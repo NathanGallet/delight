@@ -1,10 +1,7 @@
 defmodule Delight do
   import Delight.Constants
-  require Logger
 
-  def kpi_initial_keywords do
-    Logger.info("Fetch KPI for initial keywords")
-
+  def calculate_kpi do
     # Launch all Genserver at once.
     tasks = Enum.reduce(initial_keywords(), [], fn keyword, acc ->
       [ Task.async(fn -> TwitterFetcher.fetch_keyword(keyword) end) | acc ]

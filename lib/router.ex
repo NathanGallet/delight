@@ -6,12 +6,14 @@ defmodule Delight.Router do
   plug :dispatch
 
   get "/ranks" do
-    res = Delight.kpi_initial_keywords
+    res = Delight.calculate_kpi
 
     conn
     |> put_req_header("content-type", "application/json")
     |> send_resp(:ok, Poison.encode!(res))
   end
+
+  # TODO: add rank with post
 
   match _ do
     send_resp(conn, :not_found, "sorry")
