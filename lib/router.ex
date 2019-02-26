@@ -5,7 +5,7 @@ defmodule Delight.Router do
   plug :match
   plug :dispatch
 
-  # Render all kpi from every GenServer.
+  # Return all KPI for each initial keywords.
   get "/ranks" do
     res = Delight.calculate_kpi
 
@@ -14,7 +14,7 @@ defmodule Delight.Router do
     |> send_resp(:ok, Poison.encode!(res))
   end
 
-  # Render kpi from name.
+  # Render kpi for a keyword.
   get "/ranks/:keyword" do
     res = Delight.calculate_kpi_for_keyword(keyword)
 
@@ -23,6 +23,7 @@ defmodule Delight.Router do
     |> send_resp(:ok, Poison.encode!(res))
   end
 
+  # Every other routes return `sorry`.
   match _ do
     send_resp(conn, :not_found, "sorry")
   end

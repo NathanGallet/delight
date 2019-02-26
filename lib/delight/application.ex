@@ -1,8 +1,18 @@
 defmodule Delight.Application do
+  @moduledoc """
+  Launch initial processes.
+  """
+
   use Application
   import Delight.Constants
   require Logger
 
+  @doc """
+  All TwitterFetcher with initial keywords.
+  A Registry to keep a trace of these GenServers.
+  A DynamicSupervisor in order to manage Genservers.
+  The HTTP server using Plug.Cowboy.
+  """
   def start(_type, _args) do
 
     children = [

@@ -1,4 +1,7 @@
 defmodule Delight.Registry do
+  @moduledoc """
+  This Registry keep trace of every GenServer.
+  """
   use GenServer
 
   ####################
