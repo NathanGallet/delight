@@ -8,7 +8,7 @@ defmodule Delight.Application do
     children = [
       Delight.Supervisor,
       Delight.Registry,
-      {Plug.Cowboy, scheme: :http, plug: Delight.Router, options: [port: 4010]}
+      {Plug.Cowboy, scheme: :http, plug: Delight.Router, options: [port: 4000]}
       | Enum.flat_map(initial_keywords(), &([%{id: &1, start: {TwitterFetcher, :start_link, [&1]}}]))
     ]
 

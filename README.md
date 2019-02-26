@@ -1,16 +1,25 @@
 # Delight
 
-Technical test for delight company
+Technical test for delight company.
 
-## Installation
+## Installation/Configuration.
 
 Run `mix deps.get`.
 
-You need to create the file `config/config.secret.exs` and add :
+You need to create the file `config/config.secret.exs` and add (with your own keys):
 
 ```elixir
-System.put_env("TWITTER_CONSUMER_KEY", "6dB5IVeBSvTZx3SC8xTcHoDbO")
-System.put_env("TWITTER_CONSUMER_SECRET", "dnosZkvsW8oei56UyCl1uxMqVrR8b3bp5vJdGZRAaA3ga40O0N")
-System.put_env("TWITTER_ACCESS_TOKEN", "166818158-x5QXTEunwhemUa1k8hcFTDrdaCWL00sQNxkMzglt")
-System.put_env("TWITTER_ACCESS_TOKEN_SECRET", "ODJDmlQWvmlGpmaxY22wGBxBiikWzNh0NZqBdMFs39TQb")
+use Mix.Config
+
+config :extwitter, :oauth, [
+  consumer_key: "6dB5IVeBSvTZx3SC8xTcHoDbO",
+  consumer_secret: "dnosZkvsW8oei56UyCl1uxMqVrR8b3bp5vJdGZRAaA3ga40O0N",
+  access_token: "166818158-x5QXTEunwhemUa1k8hcFTDrdaCWL00sQNxkMzglt",
+  access_token_secret: "ODJDmlQWvmlGpmaxY22wGBxBiikWzNh0NZqBdMFs39TQb"
+]
 ```
+
+Then run `iex -S mix` in order to launch the webserver.
+
+You can visit `localhost:4000/ranks` to see kpi for keywords `["microsoft", "apple", "amazon", "netflix", "google", "sony", "nintendo", "blizzard"]`.
+If you want a specific keyword, go to `localhost:4000/ranks/linux"` to see kpi for linux in this example.

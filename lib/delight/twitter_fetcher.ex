@@ -46,22 +46,21 @@ defmodule TwitterFetcher do
     Timex.to_unix(date_time)
   end
 
-  defp average(list, result \\ [])
-  defp average(list, result) do
+  defp average(list, result \\ []) do
     case length(list) do
-      n when n == 2 ->
+      2 ->
         [ first, second ] = list
 
         result = [ abs(second - first) | result ]
-        calculate_average(result)
+        calculate_kpi(result)
       _ ->
         [ first | [ second | tail ]] = list
 
-        result   = [ abs(second - first) | result ]
-        new_list = [ second | tail ]
-        average(new_list, result)
+        result = [ abs(second - first) | result ]
+        list   = [ second | tail ]
+        average(list, result)
     end
   end
 
-  defp calculate_average(list), do: Enum.sum(list)/length(list)
+  defp calculate_kpi(list), do: Float.round(60 / ( Enum.sum(list)/length(list) ), 2)
 end
