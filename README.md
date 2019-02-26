@@ -4,8 +4,6 @@ Technical test for delight company.
 
 ## Installation/Configuration.
 
-Run `mix deps.get`.
-
 You need to create the file `config/config.secret.exs` and add (with your own keys):
 
 ```elixir
@@ -19,7 +17,8 @@ config :extwitter, :oauth, [
 ]
 ```
 
-Then run `iex -S mix` in order to launch the webserver.
+Run `mix deps.get`.
+Run `iex -S mix` in order to launch the webserver.
 
 You can visit `localhost:4000/ranks` to see kpi for keywords `["microsoft", "apple", "amazon", "netflix", "google", "sony", "nintendo", "blizzard"]`.
 If you want a specific keyword, go to `localhost:4000/ranks/linux"` to see kpi for linux in this example.
