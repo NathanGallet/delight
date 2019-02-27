@@ -4,10 +4,9 @@ defmodule Delight do
   Allow us to fetch some keywords from twitter.
   """
 
-
   @doc """
   Return result for each initial keyword.
-  It will launch asynchronously each Genserver then wait for them to fetch and handle response.
+  It will launch asynchronously each Genserver then wait for them to fetch and handle responses.
   """
   def calculate_kpi do
     # Launch all Genserver at once.

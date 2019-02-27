@@ -1,6 +1,6 @@
 defmodule TwitterFetcher do
   @moduledoc """
-  This module is the GenServer.
+  This module is a GenServer who will fetch twitter with this a specific keyword.
   The `state` of this GenServer is the name that the process need to work with.
   """
 
@@ -42,7 +42,7 @@ defmodule TwitterFetcher do
       search_keyword
       |> ExTwitter.search([count: 100])              # Fetch 100 twitte.
       |> Stream.map(&(Map.get(&1, :created_at)))     # Get created_at value for each of them.
-      |> Stream.map(&(convert_created_at_to_unix/1)) # Convert this date.
+      |> Stream.map(&(convert_created_at_to_unix/1)) # Convert this date to unix timestamp.
       |> Enum.to_list                                # Convert to list.
       |> average()                                   # Calculate the KPI.
 

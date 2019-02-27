@@ -20,5 +20,5 @@ config :extwitter, :oauth, [
 Run `mix deps.get`.
 Run `iex -S mix` in order to launch the webserver.
 
-You can visit `localhost:4000/ranks` to see kpi for keywords `["microsoft", "apple", "amazon", "netflix", "google", "sony", "nintendo", "blizzard"]`.
-If you want a specific keyword, go to `localhost:4000/ranks/linux"` to see kpi for linux in this example.
+You can visit `localhost:4000/ranks` to see KPI for keywords `["microsoft", "apple", "amazon", "netflix", "google", "sony", "nintendo", "blizzard"]`.
+If you want a specific keyword, go to `localhost:4000/ranks/linux"` to see the KPI for linux in this example.
